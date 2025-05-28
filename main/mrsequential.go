@@ -17,7 +17,7 @@ import "sort"
 // for sorting by key.
 type ByKey []mr.KeyValue
 
-// for sorting by key.
+// for sorting by key. 实现了这三个方法相当于实现了Interface接口，才能将其传入Sort()
 func (a ByKey) Len() int           { return len(a) }
 func (a ByKey) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a ByKey) Less(i, j int) bool { return a[i].Key < a[j].Key }

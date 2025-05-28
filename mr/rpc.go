@@ -22,8 +22,34 @@ type ExampleReply struct {
 	Y int
 }
 
-// Add your RPC definitions here.
+type Args struct {
+	WorkerPID int
+}
 
+type Reply struct {
+	TaskType  int
+	TaskID    int
+	FileName  string   // Map 任务需要的文件名
+	Files     []string // Reduce 任务需要的文件列表
+	NReduce   int
+	AllFinish bool
+}
+
+type ReportArgs struct {
+	TaskType int
+	TaskID   int
+	Done     bool
+}
+
+type ReportReply struct {
+	Ack bool
+}
+
+// Add your RPC definitions here.
+type RPC struct {
+	WorkerID int
+	TaskID   int
+}
 
 // Cook up a unique-ish UNIX-domain socket name
 // in /var/tmp, for the coordinator.
